@@ -4,14 +4,14 @@ FROM n8nio/n8n:1.66.0
 ENV N8N_HOST=0.0.0.0
 ENV N8N_PORT=5678
 ENV N8N_PROTOCOL=http
+ENV N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=true
 
-# Use Render’s URL here:
-# ENV WEBHOOK_URL=https://<your-service-name>.onrender.com
+# Webhook URL (change it after first deploy)
+# ENV WEBHOOK_URL=https://<your-render-service>.onrender.com
 
-# Create and fix permissions
-RUN mkdir -p /home/node/.n8n && chown -R node:node /home/node
-
-USER node
+# Create config folder with correct permissions
+RUN mkdir -p /home/node/.n8n
+RUN chmod 600 /home/node/.n8n
 
 EXPOSE 5678
 
