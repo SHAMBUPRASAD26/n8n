@@ -1,0 +1,7 @@
+FROM n8nio/n8n:latest
+
+ENV N8N_BASIC_AUTH_ACTIVE=false
+ENV N8N_PORT=5678
+ENV N8N_PROTOCOL=https
+
+CMD ["n8n"]
